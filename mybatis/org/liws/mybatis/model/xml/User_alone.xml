@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 为了方便调用，mapper文件的namespace最好设置为全路径类名 -->
+<mapper namespace="org.liws.mybatis.model.SimpleUser"> 		
+
+	<insert id="add" parameterType="SimpleUser">
+		insert into t_user (user_name, password, nickname, type) 
+		values (#{user_name}, #{password}, #{nickname}, #{type})
+	</insert>
+	
+	<update id="update" parameterType="SimpleUser">
+		update t_user set 
+		nickname = #{nickname}, password = #{password}, type = #{type} 
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from t_user 
+		where id = #{id}
+	</delete>
+	
+	<select id="load" parameterType="int" resultType="SimpleUser">
+		select * from t_user 
+		where id = #{id}
+	</select>
+	
+	<select id="list" resultType="SimpleUser">
+		select * from t_user
+	</select>
+	
+	
+</mapper>

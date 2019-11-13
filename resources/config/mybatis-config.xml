@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<properties resource="config/jdbc.properties"/>
+
+	<settings>
+		<setting name="logImpl" value="LOG4J" />
+		<setting name="autoMappingBehavior" value="FULL" />
+	</settings>
+    
+	<!-- 类型别名 -->
+	<typeAliases>  			
+		<typeAlias type="org.liws.mybatis.model.SimpleUser" alias="SimpleUser"/>
+		
+		<!-- 自动把下面的包中的所有类都自动完成类似上面的映射 -->
+		<!-- <typeAlias type="org.liws.mybatis.model"/> -->
+	</typeAliases>
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!--  三种映射方式  -->
+	<mappers>
+		<!-- 方式一：only mappingXml -->
+		<mapper resource="org/liws/mybatis/model/xml/User_alone.xml" />
+		<!-- 方式二：mappingXml and simpleMapperInterface -->
+	 	<mapper resource="org/liws/mybatis/model/xml/User_withMapperInterface.xml"/>   
+	 	<!-- 方式三：mapperInterfaceWithAnnotation -->
+		<mapper class="org.liws.mybatis.model.mapper.UserAnnoMapper"/> 
+	</mappers>
+	
+</configuration>
