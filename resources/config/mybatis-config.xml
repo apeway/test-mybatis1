@@ -16,7 +16,7 @@
 		<typeAlias type="org.liws.mybatis.model.SimpleUser" alias="SimpleUser"/>
 		
 		<!-- 自动把下面的包中的所有类都自动完成类似上面的映射 -->
-		<!-- <typeAlias type="org.liws.mybatis.model"/> -->
+		<!-- <package name="org.liws.mybatis.model"/> -->
 	</typeAliases>
 	
 	<environments default="development">
